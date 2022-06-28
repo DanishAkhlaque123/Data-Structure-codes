@@ -40,7 +40,9 @@ class Solution
             
         }
         
-        Arrays.sort(res);
+        Arrays.sort(res,(pair a,pair b)->{
+            return a.val-b.val;
+        });
         int ans=0;
         boolean[] vis=new boolean[n];
         
@@ -64,7 +66,7 @@ class Solution
         
     }
     
-     public class pair implements Comparable<pair> {
+     public class pair {
         int val;
         int idx;
          public pair(int val,int idx)
@@ -73,9 +75,7 @@ class Solution
             this.idx=idx;
         }
         
-        public int compareTo(pair o){
-            return this.val-o.val;
-        }
+       
 
      }
 }
