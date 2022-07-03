@@ -14,30 +14,29 @@
  * }
  */
 class Solution {
-    int sum=0;
-    
     public int sumNumbers(TreeNode root) {
-     
         
-        helper(root,"");
+        List<Integer> list = new ArrayList<>();
+        getSum(root, 0, list);
+        int sum = 0;
+        
+        for (int val: list) {
+            sum += val;
+        }
         return sum;
     }
     
-    public void helper(TreeNode root,String s)
-    {
-        if(root.left==null && root.right==null)
-        {
-            s=s+root.val+"";
-            //System.out.println(s);
-           int n=Integer.parseInt(s);
-            sum+=n;
+    public void getSum(TreeNode root, int sum, List<Integer> list) {
+        if (root == null) {
             return;
         }
-        if(root.left!=null)
-        helper(root.left,s+root.val+"");
-        if(root.right!=null)
-        helper(root.right,s+root.val+"");
+        if (root.left == null && root.right == null) {
+            list.add(sum * 10 + root.val);
+            return;
+        }
         
+        getSum(root.left, sum * 10 + root.val, list);
+        getSum(root.right, sum * 10 + root.val, list);
         
     }
 }
