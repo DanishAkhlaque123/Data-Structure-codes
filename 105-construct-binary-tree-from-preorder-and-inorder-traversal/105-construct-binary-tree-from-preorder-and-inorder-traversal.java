@@ -14,33 +14,32 @@
  * }
  */
 class Solution {
+    public TreeNode buildTree(int[] preorder, int[] inorder) {
+        
+        return build(preorder, 0, preorder.length-1, inorder, 0, inorder.length-1);
+        
+    }
     
-    public TreeNode helper(int[] pre,int psi,int pei,int[] ino,int isi,int iei)
+    public TreeNode build(int[] preorder,int psi, int pei, int[] inorder, int isi, int iei)
     {
         if(psi>pei)
-        {
             return null;
-        }
         if(psi==pei)
-        {
-            return new TreeNode(pre[psi]);
-        }
+            return new TreeNode(preorder[psi]);
         
-        TreeNode root=new TreeNode(pre[psi]);
+        TreeNode root=new TreeNode(preorder[psi]);
+        
         int j=isi;
         int count=0;
-        while(ino[j]!=root.val)
+        while(inorder[j]!=root.val)
         {
             j++;
             count++;
         }
         
-        root.left=helper(pre,psi+1,psi+count,ino,isi,j-1);
-        root.right=helper(pre,psi+count+1,pei,ino,j+1,iei);
+        root.left=build(preorder,psi+1,psi+count, inorder, isi, j-1);
+        root.right=build(preorder,psi+count+1,pei, inorder, j+1, pei);
         return root;
-    }
-    
-    public TreeNode buildTree(int[] preorder, int[] inorder) {
-        return helper(preorder,0,preorder.length-1,inorder,0,inorder.length-1);
+        
     }
 }
