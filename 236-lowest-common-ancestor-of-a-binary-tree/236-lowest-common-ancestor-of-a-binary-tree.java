@@ -9,50 +9,56 @@
  */
 class Solution {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        ArrayList<TreeNode> lca1=lca(root,p);
-        ArrayList<TreeNode> lca2=lca(root,q);
         
-        
-        int n=lca1.size()-1;
-        int m=lca2.size()-1;
-        while(n>=0 && m>=0 && lca1.get(n)==lca2.get(m))
+        ArrayList<TreeNode> p1=helper(root,p);
+        ArrayList<TreeNode> q1=helper(root,q);
+        int l1=p1.size()-1;
+        int l2=q1.size()-1;
+        while(l1>=0 && l2>=0 && p1.get(l1)==q1.get(l2))
         {
-            n--;
-            m--;
+            l1--;
+            l2--;
+            
         }
         TreeNode t1=new TreeNode();
-        t1.val=lca1.get(++n).val;
+        t1.val=p1.get(++l1).val;
         return t1;
     }
     
-    public ArrayList<TreeNode> lca(TreeNode root, TreeNode p1)
+    public ArrayList<TreeNode> helper(TreeNode root, TreeNode target)
     {
-        if(root==p1)
+        if(root==target)
         {
-            ArrayList<TreeNode> al=new ArrayList<>();
-            
-            al.add(p1);
-            return al;
-            
+            ArrayList<TreeNode> b=new ArrayList<>();
+            b.add(target);
+            return b;
         }
-        ArrayList<TreeNode> left1=new ArrayList<>();
-        ArrayList<TreeNode> right1=new ArrayList<>();
+        
         if(root.left!=null)
-        left1=lca(root.left,p1);
-        if(left1.size()>0)
         {
-            left1.add(root);
-            return left1;
+            ArrayList<TreeNode> al1=helper(root.left,target);
+            if(al1.size()>0)
+            {
+                al1.add(root);
+                return al1;
+    
+            }
+                
         }
-        if(root.right!=null)
-        right1=lca(root.right,p1);
-         if(right1.size()>0)
+        
+         if(root.right!=null)
         {
-            right1.add(root);
-            return right1;
+            ArrayList<TreeNode> al2=helper(root.right,target);
+            if(al2.size()>0)
+            {
+                al2.add(root);
+                return al2;
+    
+            }
+                
         }
+        
         return new ArrayList<>();
         
     }
-    
 }
