@@ -8,9 +8,51 @@
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
+
+//-------------------------Very good solution-----------------------
+/*class Solution {
+    public ListNode reverseBetween(ListNode head, int left, int right) {
+        if(left == right) return head;
+        
+        //skipping the first left - 1 nodes;
+        ListNode curr = head;
+        ListNode prev = null;
+        for(int i=0;curr!=null && i<left-1;i++){
+            prev = curr;
+            curr = curr.next;
+        }
+        
+        ListNode last = prev;
+        ListNode newEnd = curr;
+        ListNode later = curr.next;
+        
+        //reverse between left and right
+        for(int i=0;curr!=null && i<right-left+1;i++){    
+            curr.next = prev;
+            prev = curr;
+            curr = later;
+            if(later!=null){
+                later = later.next;
+            }
+        }
+        
+        if(last!=null){
+            last.next = prev;
+        }
+        else{
+            head = prev;
+        }
+        
+        newEnd.next = curr;
+        
+        return head;
+    }
+}*/
+
+
 class Solution {
     public ListNode reverseBetween(ListNode head, int left, int right) {
-        if(left==right)
+         if(left==right)
             return head;
         
         while(left<right)
@@ -40,5 +82,4 @@ class Solution {
        }
         return itr;
     }
-    
 }
