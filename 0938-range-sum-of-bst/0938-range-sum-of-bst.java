@@ -22,9 +22,16 @@ class Solution {
         
         if(root.val<=high && root.val>=low)
             sum+=root.val;
+        if(root.val>high)
+            rangeSumBST(root.left,low,high);
+         else if(root.val<low)
+            rangeSumBST(root.right,low,high);
+        else
+        {
+        rangeSumBST(root.left,low,high);
+        rangeSumBST(root.right,low,high);
+        }  
         
-         rangeSumBST(root.left,low,high);
-         rangeSumBST(root.right,low,high);
         return sum;
             
     }
