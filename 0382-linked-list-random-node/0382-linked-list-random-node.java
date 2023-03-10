@@ -14,7 +14,7 @@ class Solution {
     List<Integer> arr=new ArrayList<>();
 
     public Solution(ListNode head) {
-        this.curr=head;
+        curr=head;
         while(curr!=null){
             count+=1;
             arr.add(curr.val);
