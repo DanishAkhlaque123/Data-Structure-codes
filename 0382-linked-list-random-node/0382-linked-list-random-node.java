@@ -25,7 +25,7 @@ class Solution {
     public int getRandom() {
         Random rand=new Random();
         int value = rand.nextInt(count);
-        return this.arr.get(value);
+        return arr.get(value);
     }
 }
 
