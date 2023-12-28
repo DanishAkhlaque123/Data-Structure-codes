@@ -12,7 +12,7 @@ class Solution {
         }
         if(x<0){
             negativeVal=true;
-            x=x*(-1);
+            x=Math.abs(x);
         }
         if(negativeVal){
             return (-1)*reverseNum(x, "");
