@@ -18,9 +18,7 @@ class Solution {
 
     public int amountOfTime(TreeNode root, int start) {
         ArrayList<TreeNode> ntr = getRootPath(root, start);
-        // if (ntr.size() == 0) {
-        //     return 0;
-        // }
+
         int size = 0;
         for (int i = 0; i < ntr.size(); i++) {
             TreeNode blocker = null;
