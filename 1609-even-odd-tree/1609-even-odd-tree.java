@@ -29,7 +29,6 @@ class Solution {
             int size = queue.size();
             while (size-- > 0) {
                 TreeNode node = queue.removeFirst();
-                System.out.print(node.val+" ");
                 if (level % 2 == 0 && node.val % 2 != 1) {
                     return false;
                 } else if (level % 2 == 1 && node.val % 2 == 1) {
