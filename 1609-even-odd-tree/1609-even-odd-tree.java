@@ -56,7 +56,6 @@ class Solution {
             level++;
             max=Integer.MAX_VALUE;
             min=Integer.MIN_VALUE;
-            System.out.println();
         }
         return true;
     }
