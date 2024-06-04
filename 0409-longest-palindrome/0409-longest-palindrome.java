@@ -17,7 +17,7 @@ class Solution {
         int ans=0;
         int oddLen=0;
         for(char charac : hm.keySet()){
-            System.out.println(charac+"-"+hm.get(charac));
+            // System.out.println(charac+"-"+hm.get(charac));
             if(hm.get(charac)%2==1){
                 oddLen = Math.max(hm.get(charac), oddLen);
                 ans+=hm.get(charac)-1;
