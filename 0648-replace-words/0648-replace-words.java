@@ -25,7 +25,7 @@ class Solution {
         for(String s : words){
             sb.append(s+" ");
         }
-        System.out.println(sb);
+        // System.out.println(sb);
         return sb.toString().trim();
     }
 }
