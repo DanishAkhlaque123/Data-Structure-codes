@@ -32,7 +32,7 @@ class Solution {
             }
             i++;
         }
-        System.out.println("count="+count+", j="+j+", i="+i);
+        // System.out.println("count="+count+", j="+j+", i="+i);
         return count==str2.length() ? true : false;
         // return false;
     }
